@@ -1,0 +1,184 @@
+:root{
+    --dark: #212121;
+    --light: #F8F8F8;
+
+
+    --regural: 400;
+    --medium: 500;
+    --semi-bold: 600;
+    --bold: 700;
+
+}
+body {
+
+    background-color: var(--light);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+main  {
+    width: 100%;
+    height: 100%;
+
+    scroll-snap-type: y mandatory;
+    overflow: auto;
+
+}
+
+
+section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark);
+
+    scroll-snap-align: start;
+
+}
+
+section:nth-of-type(1) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+section:nth-of-type(2) {
+     background-color: var(--dark);
+     color: var(--light);
+ }
+
+header
+{
+    height: 12vh;
+    padding: 10vh 10%;
+    align-self: stretch;
+}
+
+nav {
+    height: 80%;
+}
+#logo
+{
+    float: left;
+    background-color: grey;
+    width: 41px;
+    height: 41px;
+}
+
+nav ul
+{
+    float: right;
+}
+
+nav ul li
+{
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+
+nav ul li:not(:first-child)
+{
+    margin-left: 90px;
+}
+
+nav ul li a {
+    display: inline-block;
+    outline: none;
+    color: var(--dark);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 300;
+    opacity: 50%;
+}
+nav ul li::after {
+    content: "";
+    position: absolute;
+    background-color: var(--dark);
+    height: 6px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+nav ul li:hover::after
+{
+    width: 6px;
+    transform: translateX(100%);
+    left: calc(50% - 6px);
+}
+.picked a
+{
+    opacity: 100%;
+    font-weight: 400;
+}
+.picked:after
+{
+    content: "";
+    position: absolute;
+    background-color: var(--dark);
+    height: 6px;
+    width: 6px;
+    left: calc(50% - 6px);
+    bottom: -10px;
+    border-radius: 50%;
+}
+
+nav ul li:hover::after  {
+    transform: none;
+}
+
+#photo
+{
+    float: right;
+    margin: auto;
+    width: 50%;
+}
+#photo img
+{
+    float: right;
+    width: 26rem;
+    object-fit: cover;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+}
+.text
+{
+    float: right;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--dark);
+    width: 50%;
+}
+h1
+{
+    font-size: 50px;
+    font-weight: 500;
+    padding: 0;
+}
+p
+{
+    font-size: 30px;
+    font-weight: 400;
+    opacity: 50%;
+
+}
+.center-content
+{
+    box-sizing: border-box;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    height: 40vh;
+    width: 100%;
+    padding: 0 12vw;
+}
