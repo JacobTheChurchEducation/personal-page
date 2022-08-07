@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
 
     <link rel="stylesheet" href="..\css\styles.css">
 
@@ -10,23 +11,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+
 </head>
 <body>
-
-
-<main>
-    <article>
-        <section>
-            <header>
-                <div id="logo"></div>
-                <nav>
+<div id="container">
+    <main>
+        <header>
+            <nav>
+                <div class="logo"></div>
+                <div class="nav-wrapper">
                     <ul>
                         <li class="picked"><a href="#"> Home</a> </li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="pages/blog.html">Blog</a></li>
                         <li><a href="#">My work</a></li>
                     </ul>
-                </nav>
-            </header>
+                </div>
+                <div class="nav-m">
+                    <ul>
+                        <li class="picked">
+                            <span class="iconify" data-icon="ci:home-alt-minus"></span>
+                            <a href="#"> Home</a>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="icomoon-free:blog"></span>
+                            <a href="pages/blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="bytesize:work"></span>
+                            <a href="#">My work</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section id="AboutMe">
             <div class="center-content">
                 <div class="text">
                     <h1>I am Jakub Kosciolek</h1>
@@ -35,24 +54,69 @@
                 <div id="photo"> <img src="..\img\myPhoto.jpg"> </div>
             </div>
         </section>
+    </main>
+    <article>
         <section id="MyGols">
-            <div class="text">
-                <h1>My goals here</h1>
+            <div class="center-content">
+
+                <div class="text">
+                    <h1>My goals here</h1>
+                    <p>1. Share my journey through the university and life<br></p>
+                    <p>2. Show my work                                    <br></p>
+                    <p>3. Share my contact for possible collaboration     <br></p>
+                </div>
             </div>
         </section>
-        <section>
+        <section id="LastPost">
+            <div class="center-content">
             <div class="text">
                 <h1>Last posts</h1>
             </div>
+                <div class="blog-align">
+                    <div class="blog-post">
+                        <a href="#">
+                            <div class="blog-photo"><img src="..\img\study.jpg"></div>
+                            <div class="blog-text">How to get your 80/20 from the study?</div>
+                        </a>
+                    </div>
+                    <div class="blog-post">
+                        <a href="#">
+                            <div class="blog-photo"><img src="..\img\coding.jpg"></div>
+                            <div class="blog-text">How to get your 80/20 from the study?</div>
+                        </a>
+                    </div>
+                    <div class="blog-post">
+                        <a href="#">
+                            <div class="blog-photo"><img src="..\img\coffee.jpg"></div>
+                            <div class="blog-text">How to get your 80/20 from the study?</div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
         </section>
     </article>
-</main>
+    <footer>
+        <div class="center-content">
+            <div class="text">
+                <div class="logo"></div>
+                <div class="footer-element">
+                    <div class="icon"><span class="iconify" data-icon="akar-icons:instagram-fill" style="font-size: 30px; font-weight: 500; color: #F8F8F8;"></span></div>
+                    <p>jakub_kociolek<br></p>
+                </div>
+                <div class="footer-element">
+                    <div class="icon"><span class="iconify" data-icon="fontisto:email" style="font-size: 30px; font-weight: 500;  color: #f8f8f8;"></span></div>
+                    <p>jakub.m.kosciolek@gmail.com<br></p>
+               </div>
+                <div class="footer-element">
+                    <div class="icon"><span class="iconify" data-icon="iconoir:linkedin" style="font-size: 30px; font-weight: 500; color: #f8f8f8;"></span></div>
+                    <p>Jakub Kosciolek<br></p>
+              </div>
 
-<footer>
-    <div class="text">
-
-    </div>
-</footer>
-
+                <p id="copyright">© 2022 Jakub Kosciolek - All right Reserved. Published with Ghost</p>
+            </div>
+        </div>
+    </footer>
+</div>
 </body>
 </html>
