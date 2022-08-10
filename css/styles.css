@@ -8,6 +8,9 @@
     --semi-bold: 600;
     --bold: 700;
 
+
+
+    --background-transition: background-color 500ms ease;
 }
 body {
 
@@ -17,8 +20,7 @@ body {
     padding: 0;
     width: 100%;
     height: 100vh;
-
-}
+    }
 #container
 {
     scroll-snap-type: y mandatory;
@@ -56,6 +58,7 @@ section {
     justify-content: flex-start;
     align-items: center;
     scroll-snap-align: none;
+    height: calc(100vh - 12vh);
 }
 
 
@@ -97,9 +100,10 @@ p
 .blog-align
 {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: space-around;
+    gap: 3rem;
     flex-wrap: wrap;
+    padding-bottom: 4rem;
 }
 .blog-post
 {
@@ -108,17 +112,39 @@ p
 .blog-post a
 {
     text-decoration: none;
-    color: var(--dark)
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 350px;
 }
+.blog-photo
+{
+    width: 100%;
+}
+
 .blog-photo img
 {
-    width: 350px;
+    width: 100%;
     aspect-ratio: 3 / 2;
     object-fit: cover;
+    margin: auto;
 }
 .blog-text {
-    width: 240px;
+    width: 350px;
     font-size: 1.5rem;
+}
+@media only screen and (max-width: 1522px)
+{
+    #LastPost > .center-content
+    {
+        padding: 0 5vw;
+    }
+    #LastPost > .center-content > .blog-align
+    {
+        /*justify-content: space-between !important;*/
+
+    }
 }
 
 /*Header content */
@@ -128,31 +154,20 @@ main  {
 }
 header {
     height: 12vh;
-    padding: 5vh 10%;
+    padding: 5vh 10vw;
     align-self: stretch;
+    box-sizing: border-box;
 }
 
 nav {
     height: 80%;
 }
-nav ul li a {
-    display: inline-block;
-    outline: none;
-    color: var(--dark);
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 300;
-    opacity: 50%;
-}
+
 .picked a {
     opacity: 100%;
-    font-weight: 400;
+    font-weight: var(--regural);
 }
-nav ul li {
-    display: inline-block;
-    float: left;
-    position: relative;
-}
+
 .logo {
     float: left;
     background-color: white;
@@ -161,178 +176,392 @@ nav ul li {
     height: 41px;
 
 }
+nav ul li a {
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: var(--regural);
+    opacity: 50%;
+    color: inherit;
+}
+nav ul li
+{
+    color: var(--dark);
+}
+
+
+nav ul li::after {
+    content: "";
+    position: absolute;
+    background-color: var(--dark);
+    height: 8px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+nav ul li:hover::after {
+    width: 6px;
+    height: 6px;
+    transform: translateX(100%);
+    left: calc(50% - 3px);
+}
+.picked
+{
+    position: relative;
+}
+
+.picked::after {
+    content: "";
+    position: absolute;
+    background-color: var(--dark);
+    height: 6px;
+    width: 6px;
+    left: calc(50% - 3px);
+    bottom: -10px;
+    border-radius: 50%;
+}
+.picked.dark-element-dot::after
+{
+    background-color: var(--light);
+    transition: var(--background-transition);
+
+}
+
+nav ul li:hover::after {
+    transform: none;
+}
 
 @media only screen and (min-width: 992px) {
 
+
     nav ul {
         float: right;
+        list-style: none;
+
     }
 
     nav ul li {
         display: inline-block;
         float: left;
         position: relative;
+        color: var(--dark);
+
     }
 
     nav ul li:not(:first-child) {
         margin-left: 90px;
     }
-
-
-    nav ul li::after {
-        content: "";
-        position: absolute;
-        background-color: var(--dark);
-        height: 6px;
-        width: 0;
-        left: 0;
-        bottom: -10px;
-        transition: 0.3s;
-        border-radius: 50%;
-    }
-
-    nav ul li:hover::after {
-        width: 6px;
-        transform: translateX(100%);
-        left: calc(50% - 6px);
-    }
-
-    .picked:after {
-        content: "";
-        position: absolute;
-        background-color: var(--dark);
-        height: 6px;
-        width: 6px;
-        left: calc(50% - 6px);
-        bottom: -10px;
-        border-radius: 50%;
-    }
-
-    nav ul li:hover::after {
-        transform: none;
-    }
 }
-.nav-m
+
+.nav-icon
 {
-    position: absolute;
-    z-index: 100;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-    margin: auto;
-    border-top: 2px solid var(--dark);
+    float: right;
+    cursor: pointer;
     display: none;
-    background-color: var(--light);
-    padding: 0;
-}
-.picked a
-{
-    font-weight: var(--medium);
 
 }
-.picked .iconify
+
+.nav-icon div
 {
-    opacity: 100%;
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark);
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
 }
-nav .iconify
+.nav-icon div
 {
-    font-size:  2rem;
-    color: #212121;
-    margin: auto;
-    opacity: 50%;
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark);
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.toggle .line1
+{
+    transform: rotate(-45deg) translate(-5px, 6px);
+    transition: var(--background-transition);
+}
+.toggle .line2
+{
+    opacity: 0;
+    transition: var(--background-transition);
 
 }
-@media only screen and (max-width: 992px)
+.toggle .line3
 {
-    /*NAV BAR*/
-    header {
-        height: auto;
-        padding-top: 5vh;
+    transform: rotate(45deg) translate(-5px, -6px);
+    transition: var(--background-transition);
+
+}
+.dark-element
+{
+    background-color: var(--light) !important;
+    transition: var(--background-transition);
+
+}
+.dark-element-font
+{
+    color: var(--light) !important;
+    transition: var(--background-transition);
+
+}
+    @media only screen and (max-width: 1273px)
+    {
+        #LastPost
+        {
+            height: auto;
+        }
     }
 
-    .nav-wrapper
+    @media only screen and (max-width: 992px) {
+        header {
+
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            height: initial;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--light);
+            z-index: 100;
+            transition: var(--background-transition);
+        }
+
+        .nav-wrapper {
+            visibility: hidden;
+        }
+
+        .nav-active {
+            visibility: visible;
+        }
+
+        /*NAV BAR*/
+        .nav-icon {
+            display: inline-block;
+        }
+
+        nav {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .nav-bar {
+            transition: background-color 200ms linear;
+        }
+
+        nav ul {
+            font-weight: var(--bold);
+            list-style: none;
+            position: absolute;
+            z-index: 100;
+            right: 0;
+            top: 29px;
+            box-sizing: border-box;
+            background-color: var(--light);
+            padding: 3rem calc(3rem + 2.5rem) 3rem 3rem;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            border-radius: 35px;
+            margin: 0;
+            transition: var(--background-transition);
+
+        }
+
+
+        nav ul li a {
+            font-size: 1rem;
+            font-weight: var(--medium);
+            transition: var(--background-transition);
+        }
+
+        .picked a {
+            font-weight: var(--medium);
+            transition: var(--background-transition);
+        }
+
+        nav ul li:not(:first-child) {
+            margin-top: 2rem;
+        }
+
+        nav ul li:hover::after {
+            transform: none;
+            display: none;
+            left: 0;
+        }
+
+        .picked:after {
+            left: initial;
+            top: calc(50% - 4px);
+            width: 8px;
+            height: 8px;
+            right: -2.5rem;
+            transition: var(--background-transition);
+        }
+
+        .dark {
+            background-color: var(--dark) !important;
+            color: var(--light) !important;
+            transition: var(--background-transition);
+
+        }
+
+        /**/
+        #AboutMe {
+            height: 100vh;
+        }
+
+        main > #AboutMe > .center-content {
+            flex-direction: column-reverse;
+        }
+
+        .center-content {
+            margin-left: auto;
+            margin-right: auto;
+            /*max-width: 300px;*/
+
+        }
+
+        .text {
+            width: 100%;
+        }
+
+        #AboutMe h1 {
+            width: auto;
+            text-align: center;
+        }
+
+        #AboutMe p {
+            text-align: center;
+        }
+
+        #photo {
+            margin: 0 auto 2rem;
+            max-width: 300px;
+        }
+
+
+        /*    Last posts*/
+        #LastPost > .center-content {
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+
+        }
+
+        #LastPost > .center-content > .blog-align > .blog-post a {
+            flex-direction: row;
+            width: 100%;
+            margin: auto;
+        }
+
+        #LastPost > .center-content > .blog-align > .blog-post a > .blog-photo
+        {
+            max-width: 50%;
+        }
+        #LastPost > .center-content > .blog-align > .blog-post a > .blog-text
+        {
+            width: auto;
+            margin: auto;
+        }
+
+
+    #LastPost > .blog-post > .blog-text text
+    {
+        margin: auto;
+    }
+
+    #LastPost
+    {
+        height: auto;
+    }
+/*    FOOOTER*/
+
+    footer .footer-element
+    {
+        width: max-content;
+    }
+    footer .footer-element p
     {
         display: none;
+        width: 0;
     }
-    .nav-m
+    footer > .center-content > .text
     {
-        display: flex;
-    }
-    nav ul
-    {
-        padding: 0;
-        display: flex;
-        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-around;
+        gap: 3rem;
     }
-    nav ul li
+    #copyright
     {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        row-gap: 1rem;
-        box-sizing: border-box;
-    }
-    nav ul li a
-    {
-        font-size: 1rem;
-        font-weight: var(--medium);
-    }
-    #logo
-    {
+        margin-top: 2rem;
+        text-align: center !important;
+        vertical-align:bottom;
 
     }
+    footer .logo
+    {
+        margin-bottom: 0 !important;
+    }
+    .footer-element
+    {
+        margin-top: 0 !important;
+        align-items: flex-start;
+        display: inline-block !important;
+    }
 
-
-    /**/
-    #AboutMe .center-content
-    {
-        flex-direction: column-reverse;
-    }
-    .center-content
-    {
-        margin-left: auto;
-        margin-right: auto;
-        /*max-width: 300px;*/
-
-    }
-    .text
-    {
-        width: 100%;
-    }
-    #AboutMe h1
-    {
-        width: auto;
-        text-align: center;
-    }
-    #AboutMe p
-    {
-        text-align: center;
-    }
-    #photo
-    {
-        margin: 0 auto 2rem;
-        max-width: 300px;
-    }
 
 }
-@media screen and (max-width: 575px)
+@media screen and (max-width: 602px)
 {
     #photo
     {
-        max-width: 180px;
+        max-width: 200px;
     }
     h1
     {
         font-size: 2rem;
     }
+    footer > .center-content > .text
+    {
+        gap: 1rem;
+    }
+
 
 }
-@media screen and(max-width: 767px) {
-    .text p {
-        font-size: 1.25rem;
+@media screen and (max-width: 767px) {
+
+
+    #LastPost > .center-content > .blog-align > .blog-post a
+    {
+        flex-direction: column;
+        max-width: calc(100% - 4rem);
+        margin: auto;
+
     }
+
+
+    #LastPost > .center-content > .blog-align > .blog-post a > .blog-photo
+    {
+        max-width: calc(100% - 4rem);
+        margin: auto;
+
+
+    }
+    #LastPost > .center-content > .blog-align > .blog-post a > .blog-text
+    {
+        font-size: 1.7rem;
+        width: auto !important;
+        margin: auto;
+    }
+
 }
 
 
@@ -354,7 +583,7 @@ nav .iconify
 
 #AboutMe .center-content
 {
-    margin-top: 6rem;
+    margin: auto;
 }
 /*MyGoals section*/
 #MyGols {
@@ -378,6 +607,8 @@ nav .iconify
 #LastPost .center-content
 {
     flex-direction: column;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 #LastPost .center-content h1
 {

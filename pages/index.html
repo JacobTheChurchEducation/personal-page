@@ -5,43 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
 
-    <link rel="stylesheet" href="..\css\styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 </head>
 <body>
 <div id="container">
     <main>
-        <header>
+        <header class="nav-bar">
             <nav>
                 <div class="logo"></div>
                 <div class="nav-wrapper">
                     <ul>
                         <li class="picked"><a href="#"> Home</a> </li>
-                        <li><a href="pages/blog.html">Blog</a></li>
+                        <li><a href="../pages/blog.html">Blog</a></li>
                         <li><a href="#">My work</a></li>
                     </ul>
                 </div>
-                <div class="nav-m">
-                    <ul>
-                        <li class="picked">
-                            <span class="iconify" data-icon="ci:home-alt-minus"></span>
-                            <a href="#"> Home</a>
-                        </li>
-                        <li>
-                            <span class="iconify" data-icon="icomoon-free:blog"></span>
-                            <a href="pages/blog.html">Blog</a>
-                        </li>
-                        <li>
-                            <span class="iconify" data-icon="bytesize:work"></span>
-                            <a href="#">My work</a>
-                        </li>
-                    </ul>
+                <div class="nav-icon">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
                 </div>
             </nav>
         </header>
@@ -101,22 +92,24 @@
             <div class="text">
                 <div class="logo"></div>
                 <div class="footer-element">
-                    <div class="icon"><span class="iconify" data-icon="akar-icons:instagram-fill" style="font-size: 30px; font-weight: 500; color: #F8F8F8;"></span></div>
+                    <div class="icon"><span class="iconify" data-icon="akar-icons:instagram-fill" style="font-size: 41px; font-weight: 500; color: #F8F8F8;"></span></div>
                     <p>jakub_kociolek<br></p>
                 </div>
                 <div class="footer-element">
-                    <div class="icon"><span class="iconify" data-icon="fontisto:email" style="font-size: 30px; font-weight: 500;  color: #f8f8f8;"></span></div>
+                    <div class="icon"><span class="iconify" data-icon="fontisto:email" style="font-size: 41px; font-weight: 500;  color: #f8f8f8;"></span></div>
                     <p>jakub.m.kosciolek@gmail.com<br></p>
                </div>
                 <div class="footer-element">
-                    <div class="icon"><span class="iconify" data-icon="iconoir:linkedin" style="font-size: 30px; font-weight: 500; color: #f8f8f8;"></span></div>
+                    <div class="icon"><span class="iconify" data-icon="iconoir:linkedin" style="font-size: 41px; font-weight: 500; color: #f8f8f8;"></span></div>
                     <p>Jakub Kosciolek<br></p>
               </div>
-
                 <p id="copyright">© 2022 Jakub Kosciolek - All right Reserved. Published with Ghost</p>
             </div>
         </div>
     </footer>
 </div>
+
+<script src="../js/javascript.js"></script>
+
 </body>
 </html>
