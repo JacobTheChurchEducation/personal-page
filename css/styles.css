@@ -11,6 +11,9 @@
 
 
     --background-transition: background-color 500ms ease;
+
+    --leftChange: calc(50% - 3px);
+    --rightChange: calc(50% - 3px);
 }
 body {
 
@@ -191,27 +194,29 @@ nav ul li
 }
 
 
-nav ul li::after {
-    content: "";
-    position: absolute;
-    background-color: var(--dark);
-    height: 8px;
-    width: 0;
-    left: 0;
-    bottom: -10px;
-    transition: 0.3s;
-    border-radius: 50%;
-}
+/*nav ul li::after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    background-color: var(--dark);*/
+/*    height: 8px;*/
+/*    width: 0;*/
+/*    left: 0;*/
+/*    bottom: -10px;*/
+/*    transition: 0.3s;*/
+/*    border-radius: 50%;*/
+/*}*/
 
-nav ul li:hover::after {
-    width: 6px;
-    height: 6px;
-    transform: translateX(100%);
-    left: calc(50% - 3px);
-}
+/*nav ul li:hover::after {*/
+/*    width: 6px;*/
+/*    height: 6px;*/
+/*    transform: translateX(100%);*/
+/*    left: calc(50% - 3px);*/
+/*}*/
 .picked
 {
     position: relative;
+    pointer-events: none;
+
 }
 
 .picked::after {
@@ -220,19 +225,22 @@ nav ul li:hover::after {
     background-color: var(--dark);
     height: 6px;
     width: 6px;
-    left: calc(50% - 3px);
+    right: var(--rightChange);
     bottom: -10px;
     border-radius: 50%;
+    transition: right 0.6s ease;
 }
+
+
 .picked.dark-element-dot::after
 {
     background-color: var(--light);
     transition: var(--background-transition);
-
 }
-
-nav ul li:hover::after {
-    transform: none;
+nav ul
+{
+    pointer-events: auto;
+    position: relative;
 }
 
 @media only screen and (min-width: 992px) {
@@ -255,6 +263,7 @@ nav ul li:hover::after {
     nav ul li:not(:first-child) {
         margin-left: 90px;
     }
+
 }
 
 .nav-icon
@@ -273,32 +282,36 @@ nav ul li:hover::after {
     margin: 5px;
     transition: all 0.3s ease-in-out;
 }
-.nav-icon div
-{
-    width: 25px;
-    height: 3px;
-    background-color: var(--dark);
-    margin: 5px;
-    transition: all 0.3s ease-in-out;
-}
-
 .toggle .line1
 {
     transform: rotate(-45deg) translate(-5px, 6px);
-    transition: var(--background-transition);
 }
 .toggle .line2
 {
     opacity: 0;
-    transition: var(--background-transition);
 
 }
 .toggle .line3
 {
     transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.line1
+{
     transition: var(--background-transition);
 
 }
+.line2
+{
+    transition: var(--background-transition);
+
+}
+.line3
+{
+    transition: var(--background-transition);
+
+}
+
 .dark-element
 {
     background-color: var(--light) !important;
@@ -340,6 +353,9 @@ nav ul li:hover::after {
 
         .nav-active {
             visibility: visible;
+            transform: translateY(-15px);
+            transition: transform .2s ease-in-out;
+
         }
 
         /*NAV BAR*/
@@ -355,6 +371,8 @@ nav ul li:hover::after {
 
         .nav-bar {
             transition: background-color 200ms linear;
+
+
         }
 
         nav ul {
@@ -363,14 +381,14 @@ nav ul li:hover::after {
             position: absolute;
             z-index: 100;
             right: 0;
-            top: 29px;
+            top: 44px;
             box-sizing: border-box;
             background-color: var(--light);
             padding: 3rem calc(3rem + 2.5rem) 3rem 3rem;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
             border-radius: 35px;
             margin: 0;
-            transition: var(--background-transition);
+            /*transition: var(--background-transition);*/
 
         }
 
@@ -501,10 +519,8 @@ nav ul li:hover::after {
     }
     #copyright
     {
-        margin-top: 2rem;
         text-align: center !important;
         vertical-align:bottom;
-
     }
     footer .logo
     {
@@ -517,13 +533,17 @@ nav ul li:hover::after {
         display: inline-block !important;
     }
 
+    footer > .iconify
+    {
+        font-size: 41px;
+    }
 
 }
 @media screen and (max-width: 602px)
 {
     #photo
     {
-        max-width: 200px;
+        max-width: calc(100% - 2rem);
     }
     h1
     {
@@ -533,11 +553,23 @@ nav ul li:hover::after {
     {
         gap: 1rem;
     }
+    p
+    {
+        font-size: 1rem;
+    }
+    #LastPost > .center-content > .blog-align > .blog-post a > .blog-text
+    {
+        max-width: calc(100% - 2rem);
+    }
 
 
 }
 @media screen and (max-width: 767px) {
 
+    #LastPost > .center-content
+    {
+        padding: 0 2vw;
+    }
 
     #LastPost > .center-content > .blog-align > .blog-post a
     {
@@ -557,7 +589,7 @@ nav ul li:hover::after {
     }
     #LastPost > .center-content > .blog-align > .blog-post a > .blog-text
     {
-        font-size: 1.7rem;
+        font-size: calc((1.5 - 1) * 1.2vh + 1rem);
         width: auto !important;
         margin: auto;
     }
@@ -638,6 +670,12 @@ footer .center-content
 {
     align-self: center;
 }
+.iconify
+{
+    font-size: 39px;
+    font-weight: 500;
+    color: #F8F8F8;
+}
 
 footer p
 {
@@ -648,6 +686,7 @@ footer p
     font-size: 1.5rem;
     font-weight: var(--regural);
     margin: 0;
+    line-height: 39px;
 }
 
 .footer-element
